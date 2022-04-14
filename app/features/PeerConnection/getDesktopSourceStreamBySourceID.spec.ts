@@ -25,7 +25,6 @@ describe('getDesktopSourceStreamBySourceID callback', () => {
 
       expect(navigator.mediaDevices.getUserMedia).toBeCalledWith({
         audio: {
-          volume: 0.5,
           mandatory: {
             chromeMediaSource: 'desktop',
           },
@@ -51,7 +50,6 @@ describe('getDesktopSourceStreamBySourceID callback', () => {
 
       expect(navigator.mediaDevices.getUserMedia).toBeCalledWith({
         audio: {
-          volume: 0.5,
           mandatory: {
             chromeMediaSource: 'desktop',
           },

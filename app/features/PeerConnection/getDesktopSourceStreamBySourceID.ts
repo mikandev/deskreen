@@ -10,7 +10,6 @@ export default async (
   if (width && height) {
     return navigator.mediaDevices.getUserMedia({
       audio: {
-        volume: 0.5,
         mandatory: {
           chromeMediaSource: 'desktop',
         },
@@ -36,7 +35,6 @@ export default async (
 
   return navigator.mediaDevices.getUserMedia({
     audio: {
-      volume: 0.5,
       mandatory: {
         chromeMediaSource: 'desktop',
       },
