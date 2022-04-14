@@ -1,10 +1,12 @@
 import {
   prepareDataMessageToChangeQuality,
-  prepareDataMessageToGetSharingSourceType,
+  prepareDataMessageToGetSharingSourceType
 } from './simplePeerDataMessages';
 import { VideoQuality } from '../VideoAutoQualityOptimizer/VideoQualityEnum';
 import PeerConnectionPeerIsNullError from './errors/PeerConnectionPeerIsNullError';
 import ScreenSharingSource from './ScreenSharingSourceEnum';
+import { type } from 'os';
+import { REACT_PLAYER_WRAPPER_ID } from '../../constants/appConstants';
 
 export function getSharingShourceType(peerConnection: PeerConnection) {
   try {
@@ -20,6 +22,29 @@ export default (peerConnection: PeerConnection) => {
   }
   peerConnection.peer.on('stream', (stream) => {
     peerConnection.setUrlCallback(stream);
+
+    console.log('PeerConnectionHandlePeer...');
+
+    function playStream(stream: MediaStream) {
+      let audio = document.getElementById('client_audio') as HTMLAudioElement;
+      audio.autoplay = true;
+      audio.srcObject = stream;
+      audio.play().then(value => {
+        console.log(value);
+      }).catch(reason => {
+        console.log(reason);
+      });
+      console.log(audio);
+      console.log('audio.....');
+    }
+
+    if (stream instanceof MediaStream) {
+      console.log(stream.getAudioTracks());
+      console.log(stream.getVideoTracks());
+
+      playStream(stream);
+
+    }
 
     setTimeout(() => {
       peerConnection.videoAutoQualityOptimizer.setGoodQualityCallback(() => {
@@ -55,8 +80,8 @@ export default (peerConnection: PeerConnection) => {
     peerConnection.sendEncryptedMessage({
       type: 'CALL_ACCEPTED',
       payload: {
-        signalData: data,
-      },
+        signalData: data
+      }
     });
   });
 

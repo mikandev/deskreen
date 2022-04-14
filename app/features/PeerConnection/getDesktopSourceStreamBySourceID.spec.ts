@@ -21,8 +21,15 @@ describe('getDesktopSourceStreamBySourceID callback', () => {
     it('should handle getUserMedia without width and height (APPLICATION WINDOW SHARING CASE)', () => {
       getDesktopSourceStreamBySourceID(TEST_SCREEN_SHARING_SOURCE_ID);
 
+      console.log('describe....stream');
+
       expect(navigator.mediaDevices.getUserMedia).toBeCalledWith({
-        audio: false,
+        audio: {
+          volume: 0.5,
+          mandatory: {
+            chromeMediaSource: 'desktop',
+          },
+        },
         video: {
           mandatory: {
             chromeMediaSource: 'desktop',
@@ -40,9 +47,15 @@ describe('getDesktopSourceStreamBySourceID callback', () => {
       const TEST_WIDTH = 640;
       const TEST_HEIGHT = 480;
       getDesktopSourceStreamBySourceID(TEST_SCREEN_SHARING_SOURCE_ID, 640, 480);
+      console.log('describe1....stream');
 
       expect(navigator.mediaDevices.getUserMedia).toBeCalledWith({
-        audio: false,
+        audio: {
+          volume: 0.5,
+          mandatory: {
+            chromeMediaSource: 'desktop',
+          },
+        },
         video: {
           mandatory: {
             chromeMediaSource: 'desktop',

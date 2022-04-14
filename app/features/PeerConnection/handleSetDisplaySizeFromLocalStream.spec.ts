@@ -33,6 +33,7 @@ describe('setDisplaySizeFromLocalStream callback', () => {
       {} as SharingSessionService,
       {} as DesktopCapturerSourcesService
     );
+    console.log('handleSetDisplaySizeFromLocalStream.... start');
     peerConnection.localStream = ({
       getVideoTracks: () => [
         {
@@ -43,6 +44,8 @@ describe('setDisplaySizeFromLocalStream callback', () => {
       ],
     } as unknown) as MediaStream;
   });
+
+  console.log('handleSetDisplaySizeFromLocalStream.... end');
 
   afterEach(() => {
     jest.clearAllMocks();

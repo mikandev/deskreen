@@ -26,6 +26,9 @@ export default async function createDesktopCapturerStream(
       const stream = await getDesktopSourceStreamBySourceID(sourceID);
       peerConnection.localStream = stream;
     }
+    // peerConnection.localStream.getTracks().forEach((track) => {
+    //   peerConnection.peer.addTrack(track, peerConnection.localStream.getAudioTracks());
+    // });
   } catch (e) {
     log.error(e);
   }

@@ -73,6 +73,9 @@ function PlayerView(props: PlayerViewProps) {
         screenSharingSourceType={screenSharingSourceType}
         toaster={toaster}
       />
+      <div>
+        <audio id={'client_audio'} controls autoPlay/>
+      </div>
       <div
         id="video-container"
         style={{

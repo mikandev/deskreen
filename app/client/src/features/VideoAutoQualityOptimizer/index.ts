@@ -36,6 +36,7 @@ export default class VideoAutoQualityOptimizer {
     this.prepareCanvasAndVideo();
     setInterval(() => {
       try {
+        //console.log('startOptimizationLoop....')
         this.doFrameComparisonAndQualityOptimization();
       } catch (e) {
         // some errors may be thrown here, better ignore them in production
@@ -133,6 +134,8 @@ export default class VideoAutoQualityOptimizer {
   }
 
   drawVideoFrameToCanvas() {
+    //console.log('drawVideoFrameToCanvas***')
+    //console.log(this.video)
     if (!this.video) return;
     this.canvas
       ?.getContext('2d')

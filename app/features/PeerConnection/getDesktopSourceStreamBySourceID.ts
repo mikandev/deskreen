@@ -9,7 +9,12 @@ export default async (
 ) => {
   if (width && height) {
     return navigator.mediaDevices.getUserMedia({
-      audio: false,
+      audio: {
+        volume: 0.5,
+        mandatory: {
+          chromeMediaSource: 'desktop',
+        },
+      },
       video: {
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore: fine here, mandatory does not exist, it's a problem with types
@@ -30,7 +35,12 @@ export default async (
   }
 
   return navigator.mediaDevices.getUserMedia({
-    audio: false,
+    audio: {
+      volume: 0.5,
+      mandatory: {
+        chromeMediaSource: 'desktop',
+      },
+    },
     video: {
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore: fine here, mandatory does not exist, it's a problem with types

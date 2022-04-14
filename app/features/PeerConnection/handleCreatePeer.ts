@@ -27,6 +27,14 @@ export default function handleCreatePeer(peerConnection: PeerConnection) {
         // eslint-disable-next-line promise/always-return
         if (peerConnection.localStream !== null) {
           peerConnection.peer.addStream(peerConnection.localStream);
+          log.debug('addStream**************************');
+          log.debug(peerConnection.localStream.getTracks().length);
+          log.debug(peerConnection.localStream.getAudioTracks()[0].id);
+          log.debug(peerConnection.localStream.getAudioTracks()[0].muted);
+          log.debug(peerConnection.localStream.getAudioTracks()[0].enabled);
+          log.debug('*********')
+          log.debug(peerConnection.localStream.getVideoTracks()[0].id);
+          log.debug(peerConnection.localStream.getVideoTracks()[0].enabled);
         }
 
         peerConnection.peer.on('signal', (data: string) => {

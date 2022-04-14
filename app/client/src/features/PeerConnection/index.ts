@@ -118,11 +118,13 @@ export default class PeerConnection {
       config: { iceServers: [] },
       sdpTransform: (sdp) => {
         let newSDP = sdp;
+        console.log('============================');
         newSDP = (setSdpMediaBitrate(
           (newSDP as unknown) as string,
           'video',
           500000
         ) as unknown) as typeof sdp;
+        console.log('newSdp ',newSDP);
         return newSDP;
       },
     });
